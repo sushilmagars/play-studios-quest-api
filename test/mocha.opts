@@ -1,0 +1,4 @@
+app/**/*.spec.js
+--recursive
+--full-trace
+--exit

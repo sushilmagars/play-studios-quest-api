@@ -1,0 +1,16 @@
+{
+  "development": {
+    "database": "quest_development",
+    "username": "postgres",
+    "password": "quest_password",
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "acquire": 30000,
+      "idle": 10000
+    },
+    "host": "localhost",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
