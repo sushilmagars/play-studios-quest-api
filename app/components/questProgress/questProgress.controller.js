@@ -17,7 +17,7 @@ class QuestProgressCtrl {
    * @param {object} res - Express response object
    * @param {function} next - executes next middleware
    */
-  async updatePlayerProgress(req, res, next) {
+  static async updatePlayerProgress(req, res, next) {
     const playerId = Number(_.get(req.body, 'playerId'));
     const playerLevel = Number(_.get(req.body, 'playerLevel'));
     const chipAmountBet = Number(_.get(req.body, 'chipAmountBet'));
@@ -34,7 +34,7 @@ class QuestProgressCtrl {
       const pointsEarned = currentQuestTotalPoints + newQuestPointsEarned;
 
       // check if new milestone is reached
-      const milestone = this.newMilestoneReached(playerScore.lastMilestoneIndex, pointsEarned);
+      const milestone = this.newlyReachedMilestone(playerScore.lastMilestoneIndex, pointsEarned);
 
       // update database with new points and new milestone index
       const milestoneIndex = _.get(milestone, 'milestoneIndex', playerScore.lastMilestoneIndex);
@@ -63,7 +63,15 @@ class QuestProgressCtrl {
     }
   }
 
-  newMilestoneReached(lastMilestoneIndex, pointsEarned) {
+  /**
+   * newlyReachedMilestone
+   * @function newlyReachedMilestone
+   * @memberof QuestProgressCtrl
+   * @param {Number} lastMilestoneIndex
+   * @param {Number} pointsEarned
+   * @param {object} milestone
+   */
+  static newlyReachedMilestone(lastMilestoneIndex, pointsEarned) {
     const milestones = QUESTS.milestones;
     
     for (let i = 0; i < milestones.length; i++) {
@@ -81,7 +89,7 @@ class QuestProgressCtrl {
    * @param {Number} chipAmountBet
    * @param {Number} quest points calculated
    */
-  calculateNewPoints(playerLevel, chipAmountBet) {
+  static calculateNewPoints(playerLevel, chipAmountBet) {
     return (chipAmountBet * RATE_FROM_BET) + (playerLevel * LEVEL_BONUS_RATE);
   }
 
@@ -94,7 +102,7 @@ class QuestProgressCtrl {
    * @param {Number} lastMilestoneIndex
    * @param {Object} Player model instance
    */
-  async updateNewScore(playerId, pointsEarned, lastMilestoneIndex) {
+  static async updateNewScore(playerId, pointsEarned, lastMilestoneIndex) {
     return await models.PlayerScore.update({pointsEarned, lastMilestoneIndex}, {
       where: {id: playerId}, 
       returning: true,
