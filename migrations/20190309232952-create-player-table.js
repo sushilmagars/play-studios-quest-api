@@ -14,11 +14,6 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      currentLevel: {
-        type: Sequelize.INTEGER,
-        field: 'current_level',
-        allowNull: false
-      },
       pointsEarned: {
         type: Sequelize.INTEGER,
         field: 'points_earned',

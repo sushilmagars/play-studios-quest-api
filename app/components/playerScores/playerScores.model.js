@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
     id: ModelFields.pk(),
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        is: /[a-z]+$/i
+      }
     },
     pointsEarned: {
       type: DataTypes.INTEGER,

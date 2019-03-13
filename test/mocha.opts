@@ -1,4 +1,5 @@
 app/**/*.spec.js
 --recursive
+--require test/tests.js
 --full-trace
 --exit
