@@ -1,5 +1,6 @@
 'use strict';
 const QuestProgressCtrl = require('./questProgress.controller');
+const _ = require('lodash');
 const router = require('express').Router();
 const {check} = require('express-validator/check');
 const {validateRequestParams} = require('./questProgress.middleware');

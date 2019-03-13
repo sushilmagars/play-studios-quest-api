@@ -17,7 +17,7 @@ class QuestProgressCtrl {
    * @param {object} res - Express response object
    * @param {function} next - executes next middleware
    */
-  static async updatePlayerProgress(req, res, next) {
+  async updatePlayerProgress(req, res, next) {
     const playerId = Number(_.get(req.body, 'playerId'));
     const playerLevel = Number(_.get(req.body, 'playerLevel'));
     const chipAmountBet = Number(_.get(req.body, 'chipAmountBet'));

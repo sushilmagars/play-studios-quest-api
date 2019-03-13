@@ -1,4 +1,4 @@
-app/**/*.spec.js
+app/**/*.spec.js app/**/*.spec.integration.js
 --recursive
 --require test/tests.js
 --full-trace

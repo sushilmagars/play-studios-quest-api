@@ -61,3 +61,10 @@ function onError(error) {
 function onListening() {
   console.log('Listening on ' + PORT);
 }
+
+/**
+ * returns express app for tests
+ */
+function getApp() {
+  return app;
+}

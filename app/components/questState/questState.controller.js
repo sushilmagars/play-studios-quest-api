@@ -1,5 +1,4 @@
 'use strict';
-const QuestStateService = require('./questState.service.js');
 const AppCtrl = require('../../shared/appController.js');
 const API_RESPONSES = require('./../../shared/apiResponses.constants');
 const {quests: QUESTS} = require('./../../shared/quests');
