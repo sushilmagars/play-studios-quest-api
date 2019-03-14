@@ -9,6 +9,7 @@ const {
 } = require('./../../shared/validator.middleware');
 const { check } = require('express-validator/check');
 const {validateRequestParams} = require('./questState.middleware');
+const _ = require('lodash');
 
 module.exports = (models, app, API_BASE) => {
   const controller = new StateCtrl(models);

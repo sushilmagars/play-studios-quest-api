@@ -2,6 +2,7 @@
 const AppCtrl = require('../../shared/appController.js');
 const API_RESPONSES = require('./../../shared/apiResponses.constants');
 const {quests: QUESTS} = require('./../../shared/quests');
+const _ = require('lodash');
 
 /**
  * Controller for quest state routes
@@ -46,7 +47,7 @@ class QuestCtrl {
 
     const lastMilestoneIndex = score.lastMilestoneIndex;
     const numberOfMilestones = QUESTS.milestones.length;
-    const milestoneCompletion = Number((100 * lastMilestoneIndex) / numberOfMilestones).toFixed(2);
+    const milestoneCompletion = Number((100 * lastMilestoneIndex) / numberOfMilestones).toFixed(1);
     
     return {
       'TotalQuestPercentCompleted': milestoneCompletion, 
