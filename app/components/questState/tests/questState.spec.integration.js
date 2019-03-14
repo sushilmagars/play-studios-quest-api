@@ -50,18 +50,28 @@ describe('Quest State integration tests', () => {
       });
 
       it('should return 200 with json response', function (done) {
-        const testData = {playerId: '1',
-          playerLevel: 1,
-          chipAmountBet: 100
-        };
+        const playerId = '1';
         stubs.findByPk.resolves(playerData[0]);
 
-        request.get(`${apiBase}${url}/${testData.playerId}`)
+        request.get(`${apiBase}${url}/${playerId}`)
             .set('Content-Type', 'application/json')
             .expect(200)
             .expect((res) => {
               expect(res.body).to.have.property('TotalQuestPercentCompleted', '0.0');
               expect(res.body).to.have.property('LastMilestoneIndexCompleted', 0);
+            })
+            .end(done);
+      });
+
+      it('should return 200 with an empty response', function (done) {
+        const playerId = 1;
+        stubs.findByPk.resolves(null);
+
+        request.get(`${apiBase}${url}/${playerId}`)
+            .set('Content-Type', 'application/json')
+            .expect(204)
+            .expect((res) => {
+              expect(res.body).to.eql({});
             })
             .end(done);
       });
