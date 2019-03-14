@@ -2,7 +2,6 @@
 
 const TestHelper = require('./../../../shared/testHelper');
 const routes = require('./../questState.routes');
-const QuestStateCtrl = require('./../questState.controller');
 
 describe('Quest State integration tests', () => {
     const sandbox = sinon.createSandbox();

@@ -2,7 +2,6 @@
 
 const TestHelper = require('./../../../shared/testHelper');
 const routes = require('./../questProgress.routes');
-const QuestProgressCtrl = require('./../questProgress.controller');
 
 describe('Quest Progress integration tests', () => {
     const sandbox = sinon.createSandbox();
@@ -35,10 +34,13 @@ describe('Quest Progress integration tests', () => {
           playerLevel: 1,
           chipAmountBet: 100
         };
-        stubs.findByPk.resolves(playerData);
+        stubs.findByPk.resolves(playerData[0]);
         
-        const updateData = {
-          1: playerData[0]
+        const updateData = {1: {name: 'Sam Anderson', pointsEarned: 760, lastMilestoneIndex: 0}};
+        const expectedUpdateData = {
+          QuestPointsEarned: 770.2,
+          TotalQuestPercentCompleted: 0,
+          MilestonesCompleted: [{ MilestoneIndex: 0, ChipsAwarded: 0 }]
         };
         stubs.updateScore.resolves(updateData);
 
@@ -46,6 +48,9 @@ describe('Quest Progress integration tests', () => {
             .set('Content-Type', 'application/json')
             .send(JSON.stringify(testData))
             .expect(200)
+            .expect((res) => {
+              expect(res.body).to.deep.equal(expectedUpdateData);
+            })
             .end(done);
       });
 
