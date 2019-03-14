@@ -91,3 +91,13 @@ To run test suit
 ```
 npm test
 ```
+
+# Sequence diagrams
+
+### GET Quest State
+[![GETendpoint-Sequence.png](https://i.postimg.cc/j5j9hWgq/GETendpoint-Sequence.png)](https://postimg.cc/v1p3YmwC)
+
+### POST Quest progress
+[![quest-POST.png](https://i.postimg.cc/g2WGHDvY/quest-POST.png)](https://postimg.cc/56scx87G)
+
+
