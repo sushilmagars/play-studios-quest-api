@@ -49,7 +49,7 @@ METHOD: POST
 Body: {
 	"playerId": "1",
 	"playerLevel": "1",
-  "chipAmountBet": "100"
+  	"chipAmountBet": "100"
 }
 
 ```
